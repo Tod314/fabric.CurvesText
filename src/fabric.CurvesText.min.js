@@ -1,0 +1,10 @@
+/*!
+ * fabric CurvesText 0.9
+ * http://tj-s.ru
+ *
+ * description	fabricjs Plugin for CurvesText
+ *
+ * @copyright	Tod, tod@tj-s.ru
+ * @license		GNU GENERAL PUBLIC LICENSE v3
+ */
+fabric.CurvesText=fabric.util.createClass(fabric.Textbox,{type:"CurvesText",readyToRender:!1,fontFamily:"journalism",fontSize:18,lineHeight:1,textAlign:"center",fill:"#ff0000",initialize:function(t,i){this.callSuper("initialize",t,i),this.readyToRender=!0,this.canvas&&this.canvas.requestRenderAll()},_renderChar:function(t,i,e,n,r,a,h){if(this.readyToRender){var o=fontsArr[this.fontFamily].obj.getPath(r,a,h,this.fontSize);o.fill=this.fill,o.draw(i),void 0===this.pathData&&(this.pathData=[]),this.pathData[e]={left:a,top:h}}},_measureChar:function(t,i,e,n){var r,a,h,o=this.getFontCache(i),f=e+t,s=this._getFontDeclaration(i)===this._getFontDeclaration(n);if(e&&o[e]&&(h=o[e]),o[t]&&(kernedWidth=r=o[t]),s&&o[f]&&(a=o[f],kernedWidth=a-h),!r||!h||!a){var l=this.getMeasuringContext();this._setTextStyles(l,i,!0)}((c=fontsArr[i.fontFamily].obj).forEachGlyph(t+" ",0,0,i.fontSize,{},function(t,i,e){kernedWidth=r=i}),o[t]=r,!h&&s&&e)&&((c=fontsArr[n.fontFamily].obj).forEachGlyph(e+" ",0,0,n.fontSize,{},function(t,i,e){h=i}),o[e]=h);if(s&&!a){var c=fontsArr[n.fontFamily].obj;a=0,c.forEachGlyph(f+" ",0,0,n.fontSize,{},function(t,i,e){a=i}),o[f]=a,kernedWidth=a-h}return{width:r,kernedWidth:kernedWidth}},toSVG:function(t){for(var i="",e=fontsArr[this.fontFamily].obj,n=0;n<this._textLines.length;n++){var r={left:this.left+this.width/2+this.pathData[n].left,top:this.top+this.height/2+this.pathData[n].top},a=e.getPath(this._textLines[n],r.left,r.top,this.fontSize);a.fill=this.fill,i+=a.toSVG()}return 0!=this.angle&&(i='<g transform="rotate('+this.angle+", "+this.left+", "+this.top+')">'+i+"</g>"),i}}),fabric.CurvesText.fromObject=function(t,i){fabric.Object._fromObject("CurvesText",t,i,"text")};

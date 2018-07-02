@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Fabric.js Opentype.js demo</title>
+		<meta name="author" content="Q42">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script src="js/fabricjs.js"></script>
+		<script src="js/opentype.js"></script> 
+		<script src="../src/fabric.CurvesText.min.js"></script>
+		<script src="js/script.js"></script>
+		
+		<style>
+			body{
+				background:#edeef0;
+				font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+				margin: 20px;
+			}
+			.canvas-container{
+				background:#ffffff;
+				border: 1px solid #e3e3e3;
+			}
+			#save{
+				display: inline-block;
+				margin-top: 15px;
+				padding: 10px 15px;
+				background: rgba(0, 0, 0, 0.75);
+				border-radius: 3px;
+				color: #ffffff;
+				transition: background-color 0.4s;
+				cursor: pointer;
+				border: 0px;
+				min-width: 120px;
+			}
+			#save:hover{
+				background: rgba(0, 0, 0, 1);
+			}
+			#result_txt{
+				background:#ffffff;
+				border: 1px solid #e3e3e3;
+				margin-top: 30px;
+				width: 480px;
+				height: 200px;
+				resize: vertical;
+				padding: 10px;
+			}
+			#result_txt:empty{
+				display: none;
+			}
+		</style>
+	
+	</head>
+	<body>
+		
+
+		<canvas id="c"></canvas>
+	
+		<button id="save">save</button>
+		<div id="result"></div>
+		<textarea id="result_txt"></textarea>
+		
+		
+		
+	</body>
+</html>	
